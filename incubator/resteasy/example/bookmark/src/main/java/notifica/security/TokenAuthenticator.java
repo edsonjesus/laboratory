@@ -1,4 +1,4 @@
-package bookmark.security;
+package notifica.security;
 
 import java.util.Date;
 
@@ -6,7 +6,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
-import bookmark.rest.Token;
+import notifica.rest.Token;
 import br.gov.frameworkdemoiselle.security.Authenticator;
 import br.gov.frameworkdemoiselle.security.Credentials;
 import br.gov.frameworkdemoiselle.security.InvalidCredentialsException;

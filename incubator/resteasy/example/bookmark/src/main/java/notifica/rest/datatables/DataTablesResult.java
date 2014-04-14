@@ -1,4 +1,4 @@
-package bookmark.rest.datatables;
+package notifica.rest.datatables;
 
 import java.util.List;
 

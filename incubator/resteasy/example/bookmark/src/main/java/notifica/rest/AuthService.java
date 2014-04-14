@@ -1,4 +1,4 @@
-package bookmark.rest;
+package notifica.rest;
 
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 

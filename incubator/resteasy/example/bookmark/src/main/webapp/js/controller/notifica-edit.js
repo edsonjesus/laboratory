@@ -1,10 +1,10 @@
 $(function() {
 	$("#delete").hide();
-	$("#description").focus();
+	$("#nome").focus();
 
 	$(document).ready(function() {
 		if (id = $.url().param('id')) {
-			BookmarkProxy.load(id, loadOk, loadFailed);
+			NotificaProxy.load(id, loadOk, loadFailed);
 		}
 	});
 
@@ -14,20 +14,20 @@ $(function() {
 
 	$("#save").click(function() {
 		var form = {
-			description : $("#description").val(),
-			link : $("#link").val()
+			nome : $("#nome").val(),
+			email : $("#email").val()
 		};
 
 		if (id = $("#id").val()) {
-			BookmarkProxy.update(id, form, saveOk, saveFailed);
+			NotificaProxy.update(id, form, saveOk, saveFailed);
 		} else {
-			BookmarkProxy.insert(form, saveOk, saveFailed);
+			NotificaProxy.insert(form, saveOk, saveFailed);
 		}
 	});
 
 	$("#delete").click(function() {
 		if (confirm('Tem certeza que deseja apagar?')) {
-			BookmarkProxy.remove([ $("#id").val() ], removeOk);
+			NotificaProxy.remove([ $("#id").val() ], removeOk);
 		}
 	});
 
@@ -40,8 +40,8 @@ function loadOk(data) {
 	$("#id-row").show();
 	$("#id-text").html(data.id);
 	$("#id").val(data.id);
-	$("#description").val(data.description);
-	$("#link").val(data.link);
+	$("#nome").val(data.nome);
+	$("#email").val(data.email);
 	$("#delete").show();
 }
 

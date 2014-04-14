@@ -1,4 +1,4 @@
-package bookmark.rest;
+package notifica.rest;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;

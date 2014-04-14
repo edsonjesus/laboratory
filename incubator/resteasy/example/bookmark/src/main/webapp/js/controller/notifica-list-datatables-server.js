@@ -10,7 +10,7 @@ $(function() {
 	});
 
 	$("#new").click(function() {
-		location.href = "bookmark-edit.html";
+		location.href = "notifica-edit.html";
 	});
 
 	$("#delete").click(function() {
@@ -23,7 +23,7 @@ $(function() {
 		if (ids.length == 0) {
 			alert('Nenhum registro selecionado');
 		} else if (confirm('Tem certeza que deseja apagar?')) {
-			BookmarkProxy.remove(ids, removeOk);
+			NotificaProxy.remove(ids, removeOk);
 		}
 	});
 });
@@ -38,15 +38,15 @@ function findAllOk(data) {
 			}
 		}, {
 			"aTargets" : [ 1 ],
-			"mData" : "description",
+			"mData" : "nome",
 			"mRender" : function(data, type, full) {
-				return '<a href="bookmark-edit.html?id=' + full.id + '">' + full.description + '</a>';
+				return '<a href="notifica-edit.html?id=' + full.id + '">' + full.nome + '</a>';
 			}
 		}, {
 			"aTargets" : [ 2 ],
-			"mData" : "link",
-			"mRender" : function(link) {
-				return '<a href="' + link + '" target="_blank">' + link + '</a>';
+			"mData" : "email",
+			"mRender" : function(email) {
+				return '<a href="mailto:' + email + '">' + email + '</a>';
 			}
 		} ],
 		"oLanguage" : {
@@ -64,7 +64,7 @@ function findAllOk(data) {
 		"bFilter" : false,
 		"bRetrieve" : true,
 		"sPaginationType" : "bs_full",
-		"sAjaxSource" : 'api/bookmark/datatables',
+		"sAjaxSource" : 'api/notifica/datatables',
 		"bServerSide" : true,
 		"bSort" : false
 	});

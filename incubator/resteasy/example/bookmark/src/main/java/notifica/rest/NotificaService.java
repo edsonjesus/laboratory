@@ -1,4 +1,4 @@
-package bookmark.rest;
+package notifica.rest;
 
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 import static javax.ws.rs.core.MediaType.TEXT_PLAIN;
@@ -22,23 +22,23 @@ import javax.ws.rs.core.Response.Status;
 
 import org.jboss.resteasy.spi.validation.ValidateRequest;
 
-import bookmark.business.BookmarkBC;
-import bookmark.entity.Bookmark;
+import notifica.business.NotificaBC;
+import notifica.entity.Notifica;
 import br.gov.frameworkdemoiselle.security.LoggedIn;
 import br.gov.frameworkdemoiselle.transaction.Transactional;
 
 @ValidateRequest
-@Path("bookmark")
+@Path("notifica")
 @Consumes(APPLICATION_JSON)
 @Produces(APPLICATION_JSON)
-public class BookmarkService {
+public class NotificaService {
 
 	@Inject
-	private BookmarkBC bc;
+	private NotificaBC bc;
 
 	@GET
 	@LoggedIn
-	public List<Bookmark> findAll() throws Exception {
+	public List<Notifica> findAll() throws Exception {
 		return bc.findAll();
 	}
 
@@ -46,7 +46,7 @@ public class BookmarkService {
 	@Path("{id}")
 	public Response load(@PathParam("id") Long id) throws Exception {
 		Response response = null;
-		Bookmark entity = bc.load(id);
+		Notifica entity = bc.load(id);
 
 		if (entity != null) {
 			response = Response.ok(entity).build();
@@ -59,7 +59,7 @@ public class BookmarkService {
 
 	@POST
 	@Transactional
-	public Response insert(@Valid Bookmark entity) {
+	public Response insert(@Valid Notifica entity) {
 		if (entity.getId() != null) {
 			return Response.status(BAD_REQUEST).entity("Não defina o atributo \"id\"").type(TEXT_PLAIN).build();
 		}
@@ -73,7 +73,7 @@ public class BookmarkService {
 	@POST
 	@Path("{id}")
 	@Transactional
-	public Response update(@PathParam("id") Long id, @Valid Bookmark entity) {
+	public Response update(@PathParam("id") Long id, @Valid Notifica entity) {
 		if (entity.getId() != null) {
 			return Response.status(BAD_REQUEST).entity("Não defina o atributo \"id\"").type(TEXT_PLAIN).build();
 		}

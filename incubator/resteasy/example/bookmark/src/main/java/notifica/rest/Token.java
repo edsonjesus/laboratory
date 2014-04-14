@@ -1,4 +1,4 @@
-package bookmark.rest;
+package notifica.rest;
 
 import javax.enterprise.context.RequestScoped;
 

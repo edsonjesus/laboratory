@@ -1,4 +1,4 @@
-package bookmark.rest.datatables;
+package notifica.rest.datatables;
 
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 
@@ -12,35 +12,35 @@ import javax.ws.rs.QueryParam;
 
 import org.jboss.resteasy.spi.validation.ValidateRequest;
 
-import bookmark.business.BookmarkBC;
-import bookmark.entity.Bookmark;
+import notifica.business.NotificaBC;
+import notifica.entity.Notifica;
 import br.gov.frameworkdemoiselle.pagination.Pagination;
 import br.gov.frameworkdemoiselle.pagination.PaginationContext;
 
 @ValidateRequest
-@Path("bookmark/datatables")
+@Path("notifica/datatables")
 @Produces(APPLICATION_JSON)
-public class BookmarkDataTablesService {
+public class NotificaDataTablesService {
 
 	@Inject
-	private BookmarkBC bc;
+	private NotificaBC bc;
 
 	@Inject
 	private PaginationContext paginationContext;
 
 	@GET
-	public DataTablesResult<Bookmark> findAllPaged(@QueryParam("sEcho") Integer echo,
+	public DataTablesResult<Notifica> findAllPaged(@QueryParam("sEcho") Integer echo,
 			@QueryParam("iDisplayStart") Integer displayStart, @QueryParam("iDisplayLength") Integer displayLength)
 			throws Exception {
 
-		Pagination pagination = paginationContext.getPagination(Bookmark.class, true);
+		Pagination pagination = paginationContext.getPagination(Notifica.class, true);
 		pagination.setPageSize(displayLength);
 		pagination.setFirstResult(displayStart);
 
-		List<Bookmark> data = bc.findAll();
+		List<Notifica> data = bc.findAll();
 		Long count = (long) pagination.getTotalResults();
 
-		DataTablesResult<Bookmark> result = new DataTablesResult<Bookmark>();
+		DataTablesResult<Notifica> result = new DataTablesResult<Notifica>();
 		result.setEcho(echo);
 		result.setTotalRecords(count);
 		result.setTotalDisplayRecords(count);
